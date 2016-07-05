@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "rd-segments_#{Rails.env}"
   config.action_mailer.perform_caching = false
-  config.action_mailer.default_url_optionss = {
+  config.action_mailer.default_url_options = {
     host: ENV["HOST_NAME"],
     port: ENV["PORT"].to_i
   }

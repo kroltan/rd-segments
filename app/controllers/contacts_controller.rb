@@ -2,10 +2,7 @@ class ContactsController < ApplicationController
 	before_action :authenticate_admin!
 
 	def index
-		page_size = Rails.configuration.paging["contacts"]
 		@contacts = Contact.all
-			.limit(page_size)
-			.offset(page_size * params.fetch(:page, 0))
 	end
 	
 	def show

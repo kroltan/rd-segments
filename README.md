@@ -17,7 +17,11 @@ Remember to set the following variables before starting the server or using any 
  - `DATABASE_URL`: Path to the Postgres connection, usually something like "postgres://the_role"
  - `POSTGRES_USERNAME`, `POSTGRES_PASSWORD`: PostgreSQL database role credentials, if the URL doesn't provide them.
 
-###3. Database
+###3. Install gems
+
+Run `bundle install` to install all dependency gems
+
+###4. Database
 Run `rails db:create db:migrate db:seed`
 
 Drop into a `rails console` and manually create an Admin:
@@ -26,6 +30,6 @@ Drop into a `rails console` and manually create an Admin:
 	# may save a plaintext copy, so bear that in mind.
 	Admin.new(email: "you@example.com", password: "somepass").save
 
-###4. Run
+###5. Run
 
 Now that you're set up, run `rails server` and visit http://localhost:3000

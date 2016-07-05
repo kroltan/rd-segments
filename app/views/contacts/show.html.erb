@@ -1,0 +1,14 @@
+<% content_for :title do %>
+	Contact Details
+<% end %>
+
+<% content_for :nav do %>
+	<%= nav_to "Edit", edit_contact_path(@contact) %>
+	<%= nav_to "Back", Contact %>
+<% end %>
+
+<strong>Name:</strong> <%= @contact.name %><br>
+<strong>Email:</strong> <%= @contact.email %><br>
+<strong>Age:</strong> <%= @contact.age %><br>
+<strong>State:</strong> <%= @contact.state.name %><br>
+<strong>Role:</strong> <%= @contact.role %>

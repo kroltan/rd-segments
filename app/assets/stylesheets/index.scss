@@ -1,0 +1,21 @@
+// Place all the styles related to the Index controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "colors";
+
+.buttons {
+	text-align: center;
+}
+
+.card {
+	$size: 150px;
+	display: inline-block;
+	width: $size;
+	height: $size;
+
+	border: 1px solid $divider-color;
+	border-radius: 5px;
+
+	text-align: center;
+	line-height: $size;
+}

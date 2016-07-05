@@ -1,0 +1,26 @@
+<% content_for :nav do %>
+	<%= nav_to "Back", Segment %>
+<% end %>
+
+<%= form_for @segment do |f| %>
+	<%= render 'form_errors', locals: {model: @segment} %>
+	<div class="field">
+		<%= f.label :name %>
+		<%= f.text_field :name %>
+	</div>
+	<div class="field">
+		<%= f.label :query %>
+		<p class="note">
+			<strong>Available operators:</strong>
+			<%= operators.
+					map { |o| "#{o[:name]}(#{o[:args]})" }.
+					join ", " %>
+		</p>
+		<textarea name="segment[query]" id="segment_query"><%=
+			pretty_json @segment.query
+		%></textarea>
+	</div>
+	<div class="field">
+		<%= f.submit %>
+	</div>
+<% end %>

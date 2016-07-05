@@ -1,0 +1,13 @@
+<% if locals[:model].errors.any? %>
+	<div class="error_explanation">
+		<h2>
+			Your submission has
+			<%= pluralize(locals[:model].errors.count, "error") %>:
+		</h2>
+		<ul>
+			<% locals[:model].errors.full_messages.each do |message| %>
+				<li><%= message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>

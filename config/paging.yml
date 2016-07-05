@@ -1,0 +1,11 @@
+development:
+  contacts: 50
+  segments: 50
+
+test:
+  contacts: 50
+  segments: 50
+
+production:
+  contacts: 50
+  segments: 50

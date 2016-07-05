@@ -1,0 +1,27 @@
+<% content_for :title do %>
+	View Segment
+<% end %>
+
+<% content_for :nav do %>
+	<%= nav_to "Edit", edit_segment_path(@segment) %>
+	<%= nav_to "Back", Segment %>
+<% end %>
+
+<strong>Name:</strong> <%= @segment.name %>
+<pre><code><%= pretty_json @segment.query %></code></pre>
+
+<h3>Results</h3>
+<div class="listing">
+	<div class="heading">
+		<div class="item">Name</div>
+		<div class="item actions">Actions</div>
+	</div>
+	<% Contact.where(@sql.to_sql).each do |contact|%>
+		<div class="row">
+			<div class="item"><%= contact.name %></div>
+			<div class="item actions">
+				<%= link_to "Edit", edit_contact_path(contact) %>
+			</div>
+		</div>
+	<% end %>
+</div>

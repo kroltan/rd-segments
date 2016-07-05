@@ -1,0 +1,27 @@
+<% content_for :title do %>
+	Segments
+<% end %>
+
+<% content_for :nav do %>
+	<%= nav_to "Create", new_segment_path, class: :accent %>
+	<%= nav_to "Back", root_path %>
+<% end %>
+
+<div class="listing">
+	<div class="heading">
+		<div class="item">Name</div>
+		<div class="item actions">Actions</div>
+	</div>
+	<% @segments.each do |segment|%>
+		<div class="row">
+			<div class="item"><%= segment.name %></div>
+			<div class="item actions">
+				<%= link_to "View", segment_path(segment) %>
+				<%= link_to "Edit", edit_segment_path(segment) %>
+				<%= link_to "Delete", segment_path(segment),
+							method: :delete,
+							data: {confirm: "Confirm deletion?"} %>
+			</div>
+		</div>
+	<% end %>
+</div>

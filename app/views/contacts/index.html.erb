@@ -1,0 +1,26 @@
+<% content_for :title do %>
+	Contacts
+<% end %>
+
+<% content_for :nav do %>
+	<%= nav_to "Create", new_contact_path, class: :accent %>
+	<%= nav_to "Back", root_path %>
+<% end %>
+
+<div class="listing">
+	<div class="heading">
+		<div class="item">Name</div>
+		<div class="item actions">Actions</div>
+	</div>
+	<% @contacts.each do |contact|%>
+		<div class="row">
+			<div class="item"><%= contact.name %></div>
+			<div class="item actions">
+				<%= link_to "Edit", edit_contact_path(contact) %>
+				<%= link_to "Delete", contact_path(contact),
+						method: :delete,
+						data: {confirm: "Confirm deletion?"} %>
+			</div>
+		</div>
+	<% end %>
+</div>

@@ -1,0 +1,19 @@
+<% content_for :title do %>
+	Dashboard
+<% end %>
+
+<% content_for :nav do 
+	if admin_signed_in? %>
+		<%= nav_to 'Log out', destroy_admin_session_path,
+			method: :delete %>
+	<% end
+end %>
+
+<div class="buttons">
+	<% if admin_signed_in? %>
+	<%= link_to 'Contacts', Contact, class: :card %>
+	<%= link_to 'Segments', Segment, class: :card %>
+	<% else %>
+		<%= link_to 'Log in', new_admin_session_path, class: :card %>
+	<% end %>
+</div>

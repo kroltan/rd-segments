@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: is_foo
+  query: |
+    {
+      "op": "eq",
+      "args": [
+        {
+          "op": "field",
+          "args": ["name"]
+        },
+        "Foo"
+      ]
+    }
+
+two:
+  name: of_age
+  query: |
+    {
+      "op": "gte",
+      "args": [
+        {
+          "op": "field",
+          "args": ["age"]
+        },
+        18
+      ]
+    }

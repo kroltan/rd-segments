@@ -11,7 +11,7 @@ module RdSegments
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
-    
+    conrig.secret_key_base = ENV["SECRET_KEY_BASE"]
     config.autoload_paths += %W["#{config.root}/app/validators"]
 
     config.paging = config_for(:paging)

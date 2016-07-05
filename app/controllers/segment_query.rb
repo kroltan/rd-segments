@@ -7,9 +7,7 @@ module SegmentQuery
 	def self.from_tree model, query
 		op = SegmentQuery::Operators[query["op"]]
 
-		if query["args"].count != op[:args]
-			raise ArgumentError.new "wrong argument count for #{query["op"]}"
-		end
+		self.validate_count op, query
 
 		arel_table = model.arel_table
 
@@ -20,6 +18,21 @@ module SegmentQuery
 				arg
 			end
 		}
+	end
+
+	private
+	def self.validate_count op, query
+		argc = query["args"].count
+		
+		if (op[:args] == "+" && argc >= 1 ||
+			op[:args] == "*" ||
+			argc == op[:args])
+			return
+		end
+
+		raise ArgumentError.new(
+			"wrong argument count for #{query["op"]}, expected #{op[:args]}, got #{query["args"].count}"
+		)
 	end
 end
 
@@ -90,17 +103,17 @@ SegmentQuery::Operators = {
 	"all" => {
 		args: "+",
 		op: -> (table, args) {
-			SegmentQuery::Helpers.glue args {|q, item|
+			SegmentQuery::Helpers.glue args do |q, item|
 				q.and(item)
-			}
+			end
 		}
 	},
 	"any" => {
 		args: "+",
 		op: -> (table, args) {
-			SegmentQuery::Helpers.glue args {|q, item|
+			SegmentQuery::Helpers.glue args do |q, item|
 				q.or(item)
-			}
+			end
 		}
 	},
 	"not" => {

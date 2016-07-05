@@ -61,11 +61,17 @@ class SegmentValidator < ActiveModel::Validator
 
 		if arg_count
 			# one or more
-			if arg_count == "+" && arguments.count < 1
-				record.errors.add(
-					:query,
-					"#{operation} requires at least one parameter"
-				)
+			if arg_count == "+" 
+				if arguments.count < 1
+					record.errors.add(
+						:query,
+						"#{operation} requires at least one argument"
+					)
+				end
+				return
+			elsif arg_count == "*"
+				# any amount is ok
+				return
 			end
 
 			# specific number

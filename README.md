@@ -1,24 +1,19 @@
-# README
+#RD Segments
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Setup
 
-Things you may want to cover:
+###1. Environment variables
 
-* Ruby version
+Remember to set the following variables before starting the server or using any rails/rake task:
 
-* System dependencies
+ - `POSTGRES_USERNAME`, `POSTGRES_PASSWORD`: PostgreSQL database role credentials
 
-* Configuration
+###2. Database
+Run `rails db:create db:migrate`
 
-* Database creation
+Drop into a `rails console` and manually create an Admin:
 
-* Database initialization
+	# the password is protected, but the command line
+	# may save a plaintext copy, so bear that in mind.
+	Admin.new(email: "you@example.com", password: "somepass").save
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
